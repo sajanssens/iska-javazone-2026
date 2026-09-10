@@ -1,6 +1,9 @@
-### Examples
 
 ![img_4.png](../../img/03-ai-is-stupid/img_4.png)
+
+---
+
+### Examples
 
 ---
 
@@ -18,7 +21,6 @@
 
 ---
 
-The model wants to help
 
 ![img.png](../../img/03-ai-is-stupid/img.png)
 

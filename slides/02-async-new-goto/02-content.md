@@ -33,21 +33,6 @@ Notes:
 
 ---
 
-### Take away
-
-> Async means: the function returns before its work is done.
-
-**And that's unstructured.**
-
-Notes:
-
-- JavaZone talk on Java's upcoming structured concurrency feature
-- Each example hands off work and moves on immediately, no waiting
-- Ask the room: where did that work go, who's watching it now
-- This is the key takeaway of the whole slide, the rest of the talk unpacks why "unstructured" is a problem
-
----
-
 ### What that costs us
 
 - Cancellation
@@ -121,7 +106,6 @@ Notes:
 
 ---
 
-
 ### Call tree
 
 ![img_1.png](img/02-async-new-goto/img_1.png)
@@ -132,3 +116,16 @@ Notes:
 ### Call tree
 
 ![img_2.png](img/02-async-new-goto/img.png)
+
+---
+
+### Take away
+
+> Async means: the function returns before its work is done.
+
+**And that's unstructured.** <!-- .element class="fragment" -->  
+
+- <!-- .element class="fragment" -->
+  That's like `goto`. 🤢    
+- <!-- .element class="fragment" --> 
+  Avoid async. 💡  
