@@ -60,7 +60,9 @@ In app security: is 99% acceptable?
 
 ---
 
-### Interested?
+### Like it? See...
 
-The 1% Problem: An Introduction to AI Security
+![img_10.png](../../img/03-ai-is-stupid/img_12.png)
+
+<!-- .slide: class="is-fancy1" -->
 

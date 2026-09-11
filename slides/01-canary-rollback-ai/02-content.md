@@ -88,3 +88,11 @@ Notes:
 
 - These are the talk's own closing takeaways
 - Emphasize: this isn't AI replacing the rollout strategy, it's AI replacing the manual "is this metric OK" judgment call inside it
+
+---
+
+### Like it? See...
+
+![img.png](../../img/01-canary-rollback-ai/img.png)
+
+<!-- .slide: class="is-fancy1" -->

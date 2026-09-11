@@ -11,20 +11,6 @@
 
 ---
 
-### Async is the new goto
-
-<!-- .slide: class="is-fancy1" -->
-
-It rips execution out of its scope.
-
-Notes:
-
-- Structured programming banned goto for the same reason: it broke predictable, nested control flow
-- Async does the same thing to concurrent code, execution escapes the block that started it
-- That escaped scope is the actual problem this talk is about, not concurrency itself
-
----
-
 ### Async returns before the work is done
 
 - `thread.start()`
@@ -88,6 +74,20 @@ Notes:
 
 ---
 
+### Async is the new goto!
+
+<!-- .slide: class="is-fancy1" -->
+
+It rips execution out of its scope.
+
+Notes:
+
+- Structured programming banned goto for the same reason: it broke predictable, nested control flow
+- Async does the same thing to concurrent code, execution escapes the block that started it
+- That escaped scope is the actual problem this talk is about, not concurrency itself
+
+---
+
 ### Structured concurrency, back to sync rules
 
 - Child tasks are scoped to a block
@@ -129,3 +129,12 @@ Notes:
   That's like `goto`. 🤢    
 - <!-- .element class="fragment" --> 
   Avoid async. 💡  
+
+---
+
+### Like it? See...
+
+![img.png](../../img/02-async-new-goto/img3.png)
+
+<!-- .slide: class="is-fancy1" -->
+
