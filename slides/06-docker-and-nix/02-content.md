@@ -1,101 +1,178 @@
 ### Three environments, three truths
 
-| Local                  | CI                          | Prod                     |
-| ---------------------- | --------------------------- | ------------------------ |
+| Local                    | CI                           | Prod                       |
+|--------------------------|------------------------------|----------------------------|
 | README, compose, Vagrant | YAML, apt-get, setup actions | Dockerfile, shell commands |
 
 <!-- .element: class="kc-table" -->
 
-Fix one, break another
+Fix one, break another.
 <!-- .element: class="fragment" -->
-
-Notes:
-
-- Same software, described three times
-- Classic: green check on the PR, broken runtime
-- Not hard individually, brittle together
 
 ---
 
+### Hello Nix!
+
+- Powerful cross-platform package management tool. 
+- Get a consistent environment across 
+  - development (*nix i.e. Linux and Mac)
+  - CI
+  - production
+
+---
+
+
 ### One description, every environment
 
-- Nix builds the app
-- Docker only ships it
+- Nix **builds** the app
+- Docker only **ships** it
 - Final image `FROM scratch`, no Nix inside
 
 <!-- .slide: class="is-fancy1" -->
 
-Notes:
+---
 
-- Big idea: `flake.nix` is the single source of truth for dev, CI and prod
-- Dockerfile stays a plain Dockerfile, existing tooling keeps working
-- Multi-stage: build with Nix, copy the result out
-- Payoff compounds, one config feeds dev and CI too
+### Steps
+
+1. Write Nix code to describe **how to build and run** your application.
+2. Use a `Dockerfile` and the official Nix image to **build your application** using Nix.
+3. Use a multi-stage build `FROM scratch` to copy your built application into the smallest possible image. 
 
 ---
 
-### The source of truth
+### Example
 
-```nix
-outputs = { self, nixpkgs, flake-utils }: ... rec {
-  devShell = mkShell {                        # dev + CI
-    nativeBuildInputs = [ jdk21 maven ];
+<!-- .slide: class="is-fancy1" -->
+
+---
+
+#### The app
+
+```python
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/")
+def hello_world():
+    return "<p>Hello, World!</p>"
+```
+
+Python
+
+---
+
+#### Write Nix code
+
+- Nix Flake
+  - Describes how to create development environments, build packages, etc. 
+  - A bit like `package.json`.
+
+
+```
+{
+  description = "flask-example";
+
+  inputs = {
+    ...
   };
 
-  packages.app = maven.buildMavenPackage {    # runtime
-    pname = "hello";
-    src = ./.;
-    mvnHash = "sha256-...";
-  };
+  outputs = { self, nixpkgs, flake-utils }:
+    ...
+        # Development environment
+        devShell = mkShell {
+          name = "flask-example";
+          nativeBuildInputs = [ python3 poetry ];
+        };
+
+        # Runtime package
+        packages.app = poetry2nix.mkPoetryApplication {
+          projectDir = ./.;
+        };
+
+        defaultPackage = packages.app;
+      }
+    );
 }
 ```
 
-<!-- .element: class="kc-smaller" -->
-
-`nix build` → `./result/bin/app`
-<!-- .element: class="fragment" -->
-
-Notes:
-
-- Rest of the flake is boilerplate, only these two bits matter
-- Nix has first-class knowledge of Maven, Gradle, npm, Go
-- `mvnHash` pins the dependency set, same jars everywhere
-- result/bin/app depends on nothing from your machine
-- No conflict with whatever JDK is on your laptop
-
 ---
 
-### The Dockerfile, unchanged forever
+### Build the app
+
+Install and use `nix ...`.
+
+```bash
+$ nix build
+...
+$ result/bin/app
+ * Serving Flask app 'src.app'
+ * Debug mode: off
+ * Running on http://127.0.0.1:5000
+Press CTRL+C to quit
+```
+
+--- 
+
+### Dockerfile
+
+Simplified...
 
 ```dockerfile
+# Nix builder
 FROM nixos/nix:latest AS builder
-COPY . /tmp/build
-WORKDIR /tmp/build
-RUN nix --extra-experimental-features "nix-command flakes" build
-RUN cp -R $(nix-store -qR result/) /tmp/nix-store-closure
 
+(...)
+
+RUN nix (...) build
+
+# Create the nix-store-closure
+...
+
+# Final image is based on scratch. We copy a bunch of Nix dependencies
+# but they're fully self-contained so we don't need Nix anymore.
 FROM scratch
+
 WORKDIR /app
+
+# Copy nix-store-closure and app
 COPY --from=builder /tmp/nix-store-closure /nix/store
 COPY --from=builder /tmp/build/result /app
+
 CMD ["/app/bin/app"]
 ```
 
-<!-- .element: class="kc-smaller" -->
+---
 
-Notes:
+### Try it!
 
-- Under 15 lines, never changes again when dependencies change
-- `nix-store -qR` gives the closure, smallest set of files needed to run
-- Scratch image: no distro, no package manager, tiny attack surface
-- Honest downside: one giant layer, poor caching on redeploy
+
+```bash
+$ docker build -t flask-example:dev .
+...
+
+$ docker run --rm flask-example:dev
+ * Serving Flask app 'src.app'
+ * Debug mode: off
+ * Running on http://127.0.0.1:5000
+Press CTRL+C to quit
+```
+
+---
+
+### Downsides
+- Requires Nix knowledge
+- Docker image layers are not optimal.
+  - `RUN nix build` produces a giant layer with all the dependencies in it.
+  - build-time is really fast
+  - not optimal for caching layers
 
 ---
 
 ### Worth it?
 
-| Yes, if                        | No, if                      |
-| ------------------------------ | --------------------------- |
+| Yes, if                        | No, if                       |
+|--------------------------------|------------------------------|
 | Dev, CI and prod keep drifting | Only ever building one image |
 
 <!-- .element: class="kc-table" -->

@@ -1,4 +1,4 @@
-# JavaZone 2026 Oslo: Key Takeaways
+## JavaZone 2026 Oslo: Key Takeaways
 
 Handpicked by Bram
 
