@@ -54,9 +54,9 @@
 
 ---
 
-### App security 
+### Take away
 
-In app security: is 99% acceptable?
+> My app is 99% secure. Is that acceptable?
 
 ---
 

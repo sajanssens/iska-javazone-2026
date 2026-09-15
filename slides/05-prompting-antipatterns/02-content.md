@@ -2,55 +2,64 @@
 
 - Prompt engineering: craft the perfect instruction
 - Context engineering: design what the model sees
-
-**And what it never sees**
-
-Notes:
-
-- Baruch Sadogursky, JavaZone 2026
-- 100k tokens of context, still forgets two messages ago
-- More context is not better context
-- Demos were a coding agent, applies to any agent
+  - ... **and what it never sees**
+    - Size matters: more is not better
 
 ---
 
-### 4 antipatterns
+### Four antipatterns
 
 <div class="kc-grid kc-gap2">
 
-**The Stuffed Prompt**
-<!-- .element: class="pos-color1" -->
+**The Stuffed Prompt 🥙** \
+Everything crammed upfront, static context does not scale
+<!-- .element: class="pos-color3 fragment" -->
 
-**The Wrong Tool**
-<!-- .element: class="pos-color2" -->
+**The Wrong Tool 🪓** \
+One retrieval method used everywhere
+<!-- .element: class="pos-color1 fragment" -->
 
-**The Goldfish Agent**
-<!-- .element: class="pos-color3" -->
+**The Goldfish Agent 🐟** \
+Forgets everything between sessions.
+<!-- .element: class="pos-color2 fragment" -->
 
-**The Vibes Eval**
-<!-- .element: class="pos-color4" -->
+**The Vibes Eval 😎** \
+Shipped because it felt right
+<!-- .element: class="pos-color4 fragment" -->
 
 </div>
 
+---
+
+### The fixes
+
+| Antipattern    | Fix                                                                             |
+|----------------|---------------------------------------------------------------------------------|
+| Stuffed Prompt | Lazy-load on demand via skills.                                                 |
+| Wrong Tool     | Right tool.                                                                     |
+| Goldfish Agent | External memory you control. <br> Versioned, backed up, portable across agents. |
+| Vibes Eval     | LLM writes rubrics, you review, LLM judges.                                     |
+
+<!-- .element: class="kc-table kc-left" -->
+
 Notes:
 
-- Stuffed: everything crammed upfront, static context does not scale
-- Wrong tool: one retrieval method used everywhere
-- Goldfish: forgets everything between sessions
-- Vibes: shipped because it felt right
+- Built-in memory: no versioning, no backup, no portability
+- Eval pitfalls: bleeding, leaking, negative scenarios
+- You assess the delta, not the vibe
 
 ---
 
-### Wrong tool, right tool
+#### Wrong tool, right tool
 
 | You need    | Wrong                  | Right          |
-| ----------- | ---------------------- | -------------- |
+|-------------|------------------------|----------------|
 | Correctness | Similarity search, RAG | Versioned docs |
-| Process     | Static reference docs  | Skills         |
+| Process     | Static docs (Context7) | Skills         |
 | Determinism | LLM reasoning          | Scripts        |
 | Judgment    | Scripts, regex         | Reasoning      |
 
-<!-- .element: class="kc-table kc-smaller" -->
+<!-- .element: class="kc-table kc-smaller kc-left" -->
 
 Notes:
 
@@ -61,39 +70,20 @@ Notes:
 
 ---
 
-### The fixes
-
-| Antipattern    | Fix                                    |
-| -------------- | -------------------------------------- |
-| Stuffed Prompt | Lazy-load on demand via skills         |
-| Wrong Tool     | Route to docs, scripts, rules          |
-| Goldfish Agent | External memory you control            |
-| Vibes Eval     | LLM writes rubrics, you review, LLM judges |
-
-<!-- .element: class="kc-table kc-smaller" -->
-
-Notes:
-
-- Built-in memory: no versioning, no backup, no portability
-- Eval pitfalls: bleeding, leaking, negative scenarios
-- You assess the delta, not the vibe
-
----
-
-### Ship the context
+### Ship the context 🚀
 
 **Docs + Skills + Scripts + Rules**
 
 Versioned. Tested. Distributed.
 
-<!-- .slide: class="is-fancy1" -->
-
-Notes:
-
 - Context becomes an artifact, like a jar
 - Same rigor as code: review it, test it, release it
-- Takeaway: stop tuning prompts, start shipping context
 
+---
+
+### Takeaway
+
+> Stop tuning prompts, start shipping context.
 
 ---
 

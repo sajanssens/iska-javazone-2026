@@ -1,3 +1,3 @@
-## 4 antipatterns in prompting
+## Four antipatterns in prompting
 
 <!-- .slide: class="is-module" -->
