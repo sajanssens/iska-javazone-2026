@@ -1,27 +1,11 @@
 ### Ship it, but not to everyone at once
 
+![img.png](../../img/01-canary-rollback-ai/img2.png)
+
+Notes:
 - Default deploy: big bang, all or nothing
 - One bad release, all users feel it
 - Progressive delivery: roll out gradually instead
-
-Notes:
-
-- Talk by Kevin Dubois (IBM), JavaZone: "Self-Healing Rollouts"
-- Opens with a real outage story, a bad release pushed to 100% of users at once
-- Sets up the rest of the talk: what if the rollout itself could catch that and react
-
----
-
-### GitOps, the foundation
-
-![GitOps application delivery model](img/01-canary-rollback-ai/gitops-model.png)
-<!-- .element: class="kc-smaller" -->
-
-Notes:
-
-- Git is the single source of truth, for source code and for cluster config
-- Argo CD continuously reconciles: deploy, monitor, detect drift, take action
-- This loop is what canary rollouts and automated rollback plug into
 
 ---
 
@@ -44,13 +28,16 @@ Notes:
 ---
 
 ### Where AI comes in
-
-- Hand-written PromQL thresholds are brittle
-- Replace the metric check with an AI analysis step
-- Same loop, smarter judgment call
-
 ![Canary flow with an AI analysis step deciding promote or rollback](img/01-canary-rollback-ai/ai-canary-flow.png)
-<!-- .element: class="kc-smaller" -->
+
+
+- This isn't AI replacing the rollout strategy, it's replacing the manual "is this metric OK" judgment call.
+  - Hand-written PromQL thresholds are brittle
+  - Replace the metric check with an AI analysis step
+  - Same loop, smarter judgment call
+
+<!-- .element class="fragment" -->
+
 
 Notes:
 
@@ -79,15 +66,18 @@ Notes:
 
 ### Takeaways
 
-- Rolling out to everyone at once is risky
-- Canary rollouts make bad releases cheap to catch
-- AI can read the metrics and logs for you
-- GitOps ties it together: promote or roll back, automatically
+> Rolling out to everyone at once is risky
+<!-- .element class="fragment" -->
 
-Notes:
+> Canary rollouts make bad releases cheap to catch
+<!-- .element class="fragment" -->
+ 
+> AI can read the metrics and logs for you
+<!-- .element class="fragment" -->
 
-- These are the talk's own closing takeaways
-- Emphasize: this isn't AI replacing the rollout strategy, it's AI replacing the manual "is this metric OK" judgment call inside it
+> GitOps ties it together: promote or roll back, automatically
+<!-- .element class="fragment" -->
+
 
 ---
 

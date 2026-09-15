@@ -169,13 +169,12 @@ Press CTRL+C to quit
 
 ---
 
-### Worth it?
+### Takeaway
 
-| Yes, if                        | No, if                       |
-|--------------------------------|------------------------------|
-| Dev, CI and prod keep drifting | Only ever building one image |
+> Stop describing your environment three times. Use Nix + Docker if Dev, CI and prod keep drifting.
 
-<!-- .element: class="kc-table" -->
+
+
 
 Notes:
 

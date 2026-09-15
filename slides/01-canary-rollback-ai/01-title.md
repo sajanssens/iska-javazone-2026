@@ -1,3 +1,3 @@
-## Automatic rollback of canary with AI
+## Self-Healing Rollouts
 
 <!-- .slide: class="is-module" -->
