@@ -1,3 +1,3 @@
-## De zaak van de spookklasse
+## Debugging class loading with GDB
 
 <!-- .slide: class="is-module" -->

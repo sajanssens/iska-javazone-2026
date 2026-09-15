@@ -1,58 +1,38 @@
-### De rekening van de SPA
+### De nadelen van een SPA
 
-- Data layer naar de browser sturen
-- Een eigen client cache bijhouden
-- Loading states jongleren
-- Mutaties met de hand coördineren
+- Client-side data fetching & state management overhead
+- Overbodige data stores (Redux / React Query cache in browser memory)
+- Complexe cache synchronisatie
 
 Notes:
 
-- Zo bouwden we lang app-achtige UX op het web: een SPA
-- Elk van deze punten is op zichzelf te doen
-- Bij elkaar is het veel code, alleen om de UI snel en vers te laten aanvoelen
-- En die kost groeit mee met de app, niet ernaast
+- In traditionele SPA's duwen we de hele runtime, data fetching en caching naar de browser
+- De browser downloadt eerst zware bundles voordat hij data kan fetchen: initiële TTFB en FCP lijden hieronder
+- Elke client moet zijn eigen cachebeheer en loading states orkestreren
+- Dit schaalt slecht qua client memory footprint en netwerkwaste
 
 ---
 
-### Een ander idee
+### Het RSC paradigma
 
-> Elk stukje draait waar het hoort. Het mentale model blijft hetzelfde: components.
+> Compute kosten verplaatsen naar de server. UI via het web streamen.
 
 Notes:
 
-- Sinds React Server Components is Next.js dit stap voor stap aan het uitbouwen
-- Server-werk blijft op de server, client-werk in de browser
-- Je schrijft in beide gevallen gewoon een component, geen twee werelden om te leren
+- React Server Components draaien uitsluitend op de Node.js / Edge runtime
+- Directe toegang tot databases, backend microservices, caches en filesystems zonder netwerklatency naar de client
+- Geen bundelkosten voor backend libraries of dependencies (zoals ORM's of markdown parsers)
 
 ---
 
 ### Wat is een Server Component?
 
-- Rendert op de server, stuurt geen JS mee naar de browser
-- `"use client"` schakelt over naar een Client Component
-- Beide zijn, en blijven, gewoon components
+- Rendert naar **RSC Payload** (compacte JSON-achtige representatie van de virtuele DOM)
+- 0 KB client-side JavaScript in de bundle
+- `"use client"` markeert de **serialisatiegrens** naar de browser
 
 Notes:
 
-- Een Server Component levert alleen het resultaat, geen bundel, geen hydratie-kosten
-- Zodra iets interactief moet zijn, een klik, een input, wordt het een Client Component
-- Dat onderscheid zit in één regel bovenaan het bestand, niet in een aparte architectuur
-
----
-
-### Eén boom, twee plekken
-
-:::mermaid
-graph TD
-Page["Server Component"] --> List["Server Component"]
-Page --> Client["Client Component - use client"]
-List --> Item["Server Component"]
-:::
-
-<!-- .slide: class="is-empty" -->
-
-Notes:
-
-- Nog steeds één componentenboom, zoals je gewend bent
-- Alleen: sommige takken renderen op de server, andere in de browser
-- De grens ligt waar jij hem zet, niet waar het framework hem afdwingt
+- Een Server Component produceert geen klassieke HTML-only output, maar een gestreamde RSC Payload
+- Client components worden tijdens SSR nog steeds op de server gepre-rendered, maar worden in de browser gehydrateerd
+- `"use client"` is geen compiler directive voor 'alleen client', maar definieert de hydratatie- en bundelgrens

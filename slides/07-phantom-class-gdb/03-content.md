@@ -30,7 +30,7 @@ Notes:
 
 ### Wat is een slowdebug JVM?
 
-- Gebouwd vanaf de bron, niet gedownload
+- Locally build OpenJDK, niet gedownload
 - Debug symbols aan, optimalisaties uit
 - Ruilt snelheid in voor inzicht
 
@@ -90,27 +90,50 @@ Notes:
 
 ---
 
-### De backtrace lezen
+### De backtrace ontleed
 
-- Onderaan: de trigger
-- Klim omhoog: het Java-frame dat naar binnen belde
-- Blijf klimmen: naar de echte oorzaak
+```text
+#0 SystemDictionary::resolve_instance_class_or_null(...)
+#1 JVM_FindLoadedClass / ClassLoader.loadClass(...)
+#2 com.example.plugin.RuleScanner.scanAnnotations()
+#3 com.example.app.Application.init()
+```
+
+- **JVM/GDB**: Onderschept de class-load aanvraag
+- **Java / JNI grens**: Verbindt de runtime met HotSpot
+- **De dader (Java)**: De specifieke scanner die te vroeg zocht
 
 Notes:
 
-- `bt` in GDB print de call stack op het breakpoint
-- Die lezen legt precies vast wie wie aanriep, in volgorde
-- Dit is wat loggen en stack traces niet konden geven: de echte keten, vastgelegd op het moment van de misdaad
+- JNI Java Native Interface
+- Zodra het breakpoint raakt, toont `bt` in GDB de volledige gemengde stack
+- We zien precies waar de native JVM-laag overgaat in de aanroepende Java-code
+- We hoeven niet te gokken: frame #2 wijst de boosdoener direct aan
 
 ---
 
-### Vanaf hier
+### De ontknoping
 
-De backtrace noemt de verdachte.
+De dader: een overijverige annotation scanner.
 
-<!-- .slide: class="is-fancy1" -->
+<!-- .slide: class="is-fancy2" -->
 
 Notes:
 
-- Hier pakt de live demo het over: breakpoint raken, backtrace printen, terugklimmen naar de echte aanroeper
-- Het mysterie eindigt niet met nog meer logging, maar met de JVM die zichzelf op heterdaad betrapt
+- Het bleek geen obscure static initializer of runtime reflectie te zijn
+- Een scanner inspecteerde annotaties op plugin-interfaces en forceerde daarmee een vroege class load
+- Het mysterie is opgelost door het moment van beslissen te bevriezen, niet door achteraf logs te analyseren
+
+---
+
+### Wat we hiervan leren
+
+- **Onderscheppen > Achteraf loggen**: Bevries het moment van de beslissing
+- **Slowdebug maakt transparant**: Geeft HotSpot zijn debug symbols terug
+- **Native tools voor Java-raadsels**: Als JVM-tools blind zijn, kijk onder de motorkap
+
+Notes:
+
+- Wanneer Java-level tools blind zijn omdat het gedrag in de JVM-machinerie zit, brengt native debugging uitkomst
+- GDB met een slowdebug JVM maakt het onzichtbare zichtbaar
+- Soms moet je één abstractielaag dieper durven kijken om het raadsel bovenin op te lossen

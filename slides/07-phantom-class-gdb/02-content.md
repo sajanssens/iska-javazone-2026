@@ -1,20 +1,18 @@
-### Wie laadde mijn klasse?
+### Wie of wat laadde een bepaalde class?
 
-Class loading achterhalen met GDB
+Een `LinkageError` debuggen
 
 Notes:
 
-- Liep tegen een nare LinkageError aan
-- De error zelf was niet het interessante deel
-- Er werd een klasse geladen terwijl dat absoluut niet had gemogen
-- Wilde weten wie daarvoor verantwoordelijk was
+- LinkageError is een fout waarin een class een dependency heeft op een andere class that in de tussentijd dusdanig is aangepast nadat de class was gecompiled.
+- Gebeurd vaak als er tegenstrijdige versies zijn van een class die meegenomen wordt door andere classes.
 
 ---
 
 ### De situatie
 
 - Een platform waarop klanten eigen plugins draaien
-- Elke plugin in z'n eigen classloader
+- Elke plugin in zijn eigen classloader
 - Spring bootstrapt alles bij het opstarten
 
 Notes:
@@ -28,9 +26,8 @@ Notes:
 
 ### Wat is class loading?
 
-- Klassen beginnen als `.class` bytecode op de schijf
+- Classes beginnen als `.class` bytecode op de schijf
 - De JVM laadt er pas één in het geheugen op het moment dat het echt nodig is
-- Normaal onzichtbaar, het gebeurt gewoon, on demand
 
 Notes:
 
@@ -43,8 +40,9 @@ Notes:
 
 ### De plaats delict
 
-> `java.lang.LinkageError`
-> `DiscountRule`
+> **java.lang.LinkageError**
+>
+> **DiscountRule**
 >
 > Waarom werd deze klasse geladen?
 
@@ -78,17 +76,13 @@ Notes:
 
 <div class="kc-grid kc-gap2">
 
-**Reflectie**
-<!-- .element: class="pos-color1" -->
+- **Reflectie**
 
-**Spring**
-<!-- .element: class="pos-color2" -->
+- **Spring**
 
-**Static initialisatie**
-<!-- .element: class="pos-color3" -->
+- **Static initialisatie**
 
-**Iets anders**
-<!-- .element: class="pos-color4" -->
+- **Iets anders**
 
 </div>
 
@@ -104,17 +98,16 @@ Notes:
 
 ### Doodlopende wegen
 
-| Poging | Resultaat |
-| --------------- | --------- |
-| Loggen | Te laat |
-| Stack traces | Te laat |
-| JVMTI tracing | Geen oorzaak |
-
-<!-- .element: class="kc-table kc-smaller" -->
+- Logging
+  - Te laat
+- Stack traces
+  - Te laat
+- JVMTI tracing
+  - Geen oorzaak
 
 Notes:
 
 - Loggen laat zien DAT het gebeurde, niet wie het startte
 - Een stack trace bestaat pas zodra er al iets is misgegaan, tegen die tijd is de echte aanroeper al teruggekeerd en afgewikkeld
 - JVMTI class-load hooks vuren betrouwbaar af, maar geven je het event, niet "waarom nu"
-- Genoeg logging om een kleine datacenter mee te verwarmen, nog steeds geen antwoord
+- Genoeg logging om een klein datacenter mee te verwarmen, nog steeds geen antwoord

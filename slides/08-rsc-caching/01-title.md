@@ -1,3 +1,3 @@
-## RSC & caching onder de motorkap
+## What RSCs can do in Next.js today
 
 <!-- .slide: class="is-module" -->
