@@ -1,9 +1,13 @@
 ### Streaming & Suspense
 
-- HTTP `Transfer-Encoding: chunked` streamt direct de shell
-- React `<Suspense>` boundaries isoleren trage async server queries
-- Asynchrone RSC payload chunks worden inline geschreven en gestreamd
-- Voorkomt moeten wachten tot alles is ingeladen
+- <!-- .element: class="fragment" -->
+  HTTP `Transfer-Encoding: chunked` streamt direct de shell
+- <!-- .element: class="fragment" -->
+  React `<Suspense>` boundaries isoleren trage async server queries
+- <!-- .element: class="fragment" -->
+  Asynchrone RSC payload chunks worden inline geschreven en gestreamd
+- <!-- .element: class="fragment" -->
+  Voorkomt moeten wachten tot alles is ingeladen
 
 Notes:
 
@@ -19,19 +23,19 @@ Notes:
 
 **1. Request Memoization**</br>
 React per-render deduplication
-<!-- .element: class="pos-color1" -->
+<!-- .element: class="pos-color1 fragment" -->
 
 **2. Data Cache**</br>
 Persistent across requests & builds
-<!-- .element: class="pos-color2" -->
+<!-- .element: class="pos-color2 fragment" -->
 
 **3. Full Route Cache**</br>
 Static HTML & RSC Payload
-<!-- .element: class="pos-color3" -->
+<!-- .element: class="pos-color3 fragment" -->
 
 **4. Router Cache**</br>
 In-memory Client-side Segment Cache
-<!-- .element: class="pos-color4" -->
+<!-- .element: class="pos-color4 fragment" -->
 
 </div>
 
@@ -46,9 +50,12 @@ Notes:
 
 ### 1. Request Memoization
 
-- **Scope**: Eén server-side render lifecycle (per HTTP request)
-- **Locatie**: React Runtime Memory (`React.cache`)
-- Dedupliceert identieke `GET fetch()` URLs en request parameters
+- <!-- .element: class="fragment" -->
+  **Scope**: Eén server-side render lifecycle (per HTTP request)
+- <!-- .element: class="fragment" -->
+  **Locatie**: React Runtime Memory (`React.cache`)
+- <!-- .element: class="fragment" -->
+  Dedupliceert identieke `GET fetch()` URLs en request parameters
 
 Notes:
 
@@ -60,10 +67,14 @@ Notes:
 
 ### 2. Data Cache
 
-- **Scope**: Persistent over requests, sessies en deployments
-- **Locatie**: Server Filesystem / KV Store / Redis
-- `fetch(url, { next: { revalidate: 3600, tags: ['products'] } })`
-- Biedt Time-based & On-Demand cache invalidatie
+- <!-- .element: class="fragment" -->
+  **Scope**: Persistent over requests, sessies en deployments
+- <!-- .element: class="fragment" -->
+  **Locatie**: Server Filesystem / KV Store / Redis
+- <!-- .element: class="fragment" -->
+  `fetch(url, { next: { revalidate: 3600, tags: ['products'] } })`
+- <!-- .element: class="fragment" -->
+  Biedt Time-based & On-Demand cache invalidatie
 
 Notes:
 
@@ -75,9 +86,12 @@ Notes:
 
 ### 3. Full Route Cache
 
-- **Scope**: Persistent op de server / CDN
-- **Artifacts**: Statische HTML + gecompileerde RSC Payload
-- Rendert routes op build-time (SSG) of bij revalidatie (ISR)
+- <!-- .element: class="fragment" -->
+  **Scope**: Persistent op de server / CDN
+- <!-- .element: class="fragment" -->
+  **Artifacts**: Statische HTML + gecompileerde RSC Payload
+- <!-- .element: class="fragment" -->
+  Rendert routes op build-time (SSG) of bij revalidatie (ISR)
 
 Notes:
 
@@ -89,10 +103,14 @@ Notes:
 
 ### 4. Router Cache
 
-- **Scope**: Client browser sessie (In-memory)
-- **Locatie**: Browser memory per route segment
-- Houdt eerder bezochte en via `<Link prefetch>` opgehaalde RSC payloads vast
-- Direct vooruit/achteruit navigatie zonder netwerkkosten
+- <!-- .element: class="fragment" -->
+  **Scope**: Client browser sessie (In-memory)
+- <!-- .element: class="fragment" -->
+  **Locatie**: Browser memory per route segment
+- <!-- .element: class="fragment" -->
+  Houdt eerder bezochte en via `<Link prefetch>` opgehaalde RSC payloads vast
+- <!-- .element: class="fragment" -->
+  Direct vooruit/achteruit navigatie zonder netwerkkosten
 
 Notes:
 

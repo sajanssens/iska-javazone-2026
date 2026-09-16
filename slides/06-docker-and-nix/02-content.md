@@ -13,20 +13,28 @@ Fix one, break another.
 
 ### Hello Nix!
 
-- Powerful cross-platform package management tool. 
-- Get a consistent environment across 
-  - development (*nix i.e. Linux and Mac)
-  - CI
-  - production
+- <!-- .element: class="fragment" -->
+  Powerful cross-platform package management tool.
+- <!-- .element: class="fragment" -->
+  Get a consistent environment across
+  - <!-- .element: class="fragment" -->
+    development (*nix i.e. Linux and Mac)
+  - <!-- .element: class="fragment" -->
+    CI
+  - <!-- .element: class="fragment" -->
+    production
 
 ---
 
 
 ### One description, every environment
 
-- Nix **builds** the app
-- Docker only **ships** it
-- Final image `FROM scratch`, no Nix inside
+- <!-- .element: class="fragment" -->
+  Nix **builds** the app
+- <!-- .element: class="fragment" -->
+  Docker only **ships** it
+- <!-- .element: class="fragment" -->
+  Final image `FROM scratch`, no Nix inside
 
 <!-- .slide: class="is-fancy1" -->
 
@@ -34,9 +42,12 @@ Fix one, break another.
 
 ### Steps
 
-1. Write Nix code to describe **how to build and run** your application.
-2. Use a `Dockerfile` and the official Nix image to **build your application** using Nix.
-3. Use a multi-stage build `FROM scratch` to copy your built application into the smallest possible image. 
+1. <!-- .element: class="fragment" -->
+   Write Nix code to describe **how to build and run** your application.
+2. <!-- .element: class="fragment" -->
+   Use a `Dockerfile` and the official Nix image to **build your application** using Nix.
+3. <!-- .element: class="fragment" -->
+   Use a multi-stage build `FROM scratch` to copy your built application into the smallest possible image.
 
 ---
 
@@ -64,9 +75,12 @@ Python
 
 #### Write Nix code
 
-- Nix Flake
-  - Describes how to create development environments, build packages, etc. 
-  - A bit like `package.json`.
+- <!-- .element: class="fragment" -->
+  Nix Flake
+  - <!-- .element: class="fragment" -->
+    Describes how to create development environments, build packages, etc.
+  - <!-- .element: class="fragment" -->
+    A bit like `package.json`.
 
 
 ```
@@ -95,12 +109,13 @@ Python
     );
 }
 ```
+<!-- .element: class="fragment" -->
 
 ---
 
 ### Build the app
 
-Install and use `nix ...`.
+Install and use `nix`.
 
 ```bash
 $ nix build
@@ -118,7 +133,7 @@ Press CTRL+C to quit
 
 Simplified...
 
-```dockerfile
+```dockerfile [1-2|6|8-9|11-15|16-19| ]
 # Nix builder
 FROM nixos/nix:latest AS builder
 
@@ -144,7 +159,7 @@ CMD ["/app/bin/app"]
 
 ---
 
-### Try it!
+### Trying it...
 
 
 ```bash
@@ -161,17 +176,23 @@ Press CTRL+C to quit
 ---
 
 ### Downsides
-- Requires Nix knowledge
-- Docker image layers are not optimal.
-  - `RUN nix build` produces a giant layer with all the dependencies in it.
-  - build-time is really fast
-  - not optimal for caching layers
+- <!-- .element: class="fragment" -->
+  Requires Nix knowledge
+- <!-- .element: class="fragment" -->
+  Docker image layers are not optimal.
+  - <!-- .element: class="fragment" -->
+    `RUN nix build` produces a giant layer with all the dependencies in it.
+  - <!-- .element: class="fragment" -->
+    build-time is really fast
+  - <!-- .element: class="fragment" -->
+    not optimal for caching layers
 
 ---
 
 ### Takeaway
 
-> Stop describing your environment three times. Use Nix + Docker if Dev, CI and prod keep drifting.
+> Stop describing your environment three times. <br>
+> Use Nix + Docker if Dev/CI/Prod keep drifting.
 
 
 

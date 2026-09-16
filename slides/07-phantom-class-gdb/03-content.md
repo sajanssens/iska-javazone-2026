@@ -30,9 +30,12 @@ Notes:
 
 ### Wat is een slowdebug JVM?
 
-- Locally build OpenJDK, niet gedownload
-- Debug symbols aan, optimalisaties uit
-- Ruilt snelheid in voor inzicht
+- <!-- .element: class="fragment" -->
+  Locally build OpenJDK, niet gedownload
+- <!-- .element: class="fragment" -->
+  Debug symbols aan, optimalisaties uit
+- <!-- .element: class="fragment" -->
+  Ruilt snelheid in voor inzicht
 
 Notes:
 
@@ -99,9 +102,12 @@ Notes:
 #3 com.example.app.Application.init()
 ```
 
-- **JVM/GDB**: Onderschept de class-load aanvraag
-- **Java / JNI grens**: Verbindt de runtime met HotSpot
-- **De dader (Java)**: De specifieke scanner die te vroeg zocht
+- <!-- .element: class="fragment" -->
+  **JVM/GDB**: Onderschept de class-load aanvraag
+- <!-- .element: class="fragment" -->
+  **Java / JNI grens**: Verbindt de runtime met HotSpot
+- <!-- .element: class="fragment" -->
+  **De dader (Java)**: De specifieke scanner die te vroeg zocht
 
 Notes:
 
@@ -128,9 +134,12 @@ Notes:
 
 ### Wat we hiervan leren
 
-- **Onderscheppen > Achteraf loggen**: Bevries het moment van de beslissing
-- **Slowdebug maakt transparant**: Geeft HotSpot zijn debug symbols terug
-- **Native tools voor Java-raadsels**: Als JVM-tools blind zijn, kijk onder de motorkap
+- <!-- .element: class="fragment" -->
+  **Onderscheppen > Achteraf loggen**: Bevries het moment van de beslissing
+- <!-- .element: class="fragment" -->
+  **Slowdebug maakt transparant**: Geeft HotSpot zijn debug symbols terug
+- <!-- .element: class="fragment" -->
+  **Native tools voor Java-raadsels**: Als JVM-tools blind zijn, kijk onder de motorkap
 
 Notes:
 

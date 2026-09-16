@@ -14,9 +14,12 @@ Notes:
 ![Canary rollout flow with Argo Rollouts](img/01-canary-rollback-ai/canary-flow.png)
 <!-- .element: class="kc-smaller" -->
 
-- `git push` triggers Argo Rollouts
-- Raise the canary weight a bit at a time
-- Check metrics after every step, before raising further
+- <!-- .element: class="fragment" -->
+  `git push` triggers Argo Rollouts
+- <!-- .element: class="fragment" -->
+  Raise the canary weight a bit at a time
+- <!-- .element: class="fragment" -->
+  Check metrics after every step, before raising further
 
 Notes:
 
@@ -31,12 +34,14 @@ Notes:
 ![Canary flow with an AI analysis step deciding promote or rollback](img/01-canary-rollback-ai/ai-canary-flow.png)
 
 
-- This isn't AI replacing the rollout strategy, it's replacing the manual "is this metric OK" judgment call.
-  - Hand-written PromQL thresholds are brittle
-  - Replace the metric check with an AI analysis step
-  - Same loop, smarter judgment call
-
-<!-- .element class="fragment" -->
+- <!-- .element: class="fragment" -->
+  This isn't AI replacing the rollout strategy, it's replacing the manual "is this metric OK" judgment call.
+  - <!-- .element: class="fragment" -->
+    Hand-written PromQL thresholds are brittle
+  - <!-- .element: class="fragment" -->
+    Replace the metric check with an AI analysis step
+  - <!-- .element: class="fragment" -->
+    Same loop, smarter judgment call
 
 
 Notes:
@@ -66,18 +71,7 @@ Notes:
 
 ### Takeaways
 
-> Rolling out to everyone at once is risky
-<!-- .element class="fragment" -->
-
-> Canary rollouts make bad releases cheap to catch
-<!-- .element class="fragment" -->
- 
-> AI can read the metrics and logs for you
-<!-- .element class="fragment" -->
-
-> GitOps ties it together: promote or roll back, automatically
-<!-- .element class="fragment" -->
-
+> Let AI judge the metrics, not a brittle script.
 
 ---
 

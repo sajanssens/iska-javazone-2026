@@ -1,8 +1,11 @@
 ### De nadelen van een SPA
 
-- Client-side data fetching & state management overhead
-- Overbodige data stores (Redux / React Query cache in browser memory)
-- Complexe cache synchronisatie
+- <!-- .element: class="fragment" -->
+  Client-side data fetching & state management overhead
+- <!-- .element: class="fragment" -->
+  Overbodige data stores (Redux / React Query cache in browser memory)
+- <!-- .element: class="fragment" -->
+  Complexe cache synchronisatie
 
 Notes:
 
@@ -27,9 +30,12 @@ Notes:
 
 ### Wat is een Server Component?
 
-- Rendert naar **RSC Payload** (compacte JSON-achtige representatie van de virtuele DOM)
-- 0 KB client-side JavaScript in de bundle
-- `"use client"` markeert de **serialisatiegrens** naar de browser
+- <!-- .element: class="fragment" -->
+  Rendert naar **RSC Payload** (compacte JSON-achtige representatie van de virtuele DOM)
+- <!-- .element: class="fragment" -->
+  0 KB client-side JavaScript in de bundle
+- <!-- .element: class="fragment" -->
+  `"use client"` markeert de **serialisatiegrens** naar de browser
 
 Notes:
 

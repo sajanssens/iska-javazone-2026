@@ -1,9 +1,13 @@
 ### Gecoördineerde Mutaties & Invalidatie
 
-- `revalidateTag(tag)` & `revalidatePath(path)` zorgen voor **on-demand invalidatie**
-- Invalideerd de server-side **Data Cache** en de **Full Route Cache**
-- Stuurt een nieuwe **RSC Payload** naar de browser
-- De **Router Cache** in de client wordt in dezelfde roundtrip gesynchroniseerd
+- <!-- .element: class="fragment" -->
+  `revalidateTag(tag)` & `revalidatePath(path)` zorgen voor **on-demand invalidatie**
+- <!-- .element: class="fragment" -->
+  Invalideerd de server-side **Data Cache** en de **Full Route Cache**
+- <!-- .element: class="fragment" -->
+  Stuurt een nieuwe **RSC Payload** naar de browser
+- <!-- .element: class="fragment" -->
+  De **Router Cache** in de client wordt in dezelfde roundtrip gesynchroniseerd
 
 Notes:
 
@@ -15,9 +19,12 @@ Notes:
 
 ### Architecturale Conclusie
 
-- **Co-locatie van compute & data**: Geen netwerklatency tussen UI logic en databases
-- **Drastische bundle-reductie**: Zware business logic en dependencies blijven 0 KB client-side
-- **Multi-tier Caching**: Automatische request caching
+- <!-- .element: class="fragment" -->
+  **Co-locatie van compute & data**: Geen netwerklatency tussen UI logic en databases
+- <!-- .element: class="fragment" -->
+  **Drastische bundle-reductie**: Zware business logic en dependencies blijven 0 KB client-side
+- <!-- .element: class="fragment" -->
+  **Multi-tier Caching**: Automatische request caching
 
 <!-- .slide: class="is-fancy1" -->
 

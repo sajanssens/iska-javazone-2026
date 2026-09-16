@@ -15,7 +15,7 @@
    - "99% secure" still means 1% you have to own
 1. <!-- .element class="fragment" -->
    **Context graphs for Spring AI**
-   - a decision layer on top of the model, not another prompt
+   - a decision layer on top of the model to include the **"why?"** in the context of AI agents
 
 </div>
 <div>
@@ -28,7 +28,7 @@
    **Docker & Nix**
    - one description, same build for dev, CI and prod
 1. <!-- .element class="fragment" -->
-   **De zaak van de spookklasse**
+   **Debugging class loading with GDB**
    - GDB catches class loading red-handed
 1. <!-- .element class="fragment" -->
    **RSC & caching onder de motorkap**

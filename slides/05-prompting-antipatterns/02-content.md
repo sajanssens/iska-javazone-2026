@@ -1,9 +1,13 @@
 ### From prompting to context
 
-- Prompt engineering: craft the perfect instruction
-- Context engineering: design what the model sees
-  - ... **and what it never sees**
-    - Size matters: more is not better
+- <!-- .element: class="fragment" -->
+  Prompt engineering: craft the perfect instruction
+- <!-- .element: class="fragment" -->
+  Context engineering: design what the model sees
+  - <!-- .element: class="fragment" -->
+    ... **and what it never sees**
+    - <!-- .element: class="fragment" -->
+      Size matters: more is not better
 
 ---
 
@@ -76,8 +80,10 @@ Notes:
 
 Versioned. Tested. Distributed.
 
-- Context becomes an artifact, like a jar
-- Same rigor as code: review it, test it, release it
+- <!-- .element: class="fragment" -->
+  Context becomes an artifact, like a jar
+- <!-- .element: class="fragment" -->
+  Same rigor as code: review it, test it, release it
 
 ---
 

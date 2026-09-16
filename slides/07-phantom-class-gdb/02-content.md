@@ -11,9 +11,12 @@ Notes:
 
 ### De situatie
 
-- Een platform waarop klanten eigen plugins draaien
-- Elke plugin in zijn eigen classloader
-- Spring bootstrapt alles bij het opstarten
+- <!-- .element: class="fragment" -->
+  Een platform waarop klanten eigen plugins draaien
+- <!-- .element: class="fragment" -->
+  Elke plugin in zijn eigen classloader
+- <!-- .element: class="fragment" -->
+  Spring bootstrapt alles bij het opstarten
 
 Notes:
 
@@ -26,8 +29,10 @@ Notes:
 
 ### Wat is class loading?
 
-- Classes beginnen als `.class` bytecode op de schijf
-- De JVM laadt er pas één in het geheugen op het moment dat het echt nodig is
+- <!-- .element: class="fragment" -->
+  Classes beginnen als `.class` bytecode op de schijf
+- <!-- .element: class="fragment" -->
+  De JVM laadt er pas één in het geheugen op het moment dat het echt nodig is
 
 Notes:
 
@@ -57,12 +62,18 @@ Notes:
 
 ### Zoveel manieren naar binnen
 
-- Direct gebruik (`new`)
-- Reflectie
-- Annotaties
-- Proxies & method handles
-- Opstarten van frameworks
-- Static initialisatie
+- <!-- .element: class="fragment" -->
+  Direct gebruik (`new`)
+- <!-- .element: class="fragment" -->
+  Reflectie
+- <!-- .element: class="fragment" -->
+  Annotaties
+- <!-- .element: class="fragment" -->
+  Proxies & method handles
+- <!-- .element: class="fragment" -->
+  Opstarten van frameworks
+- <!-- .element: class="fragment" -->
+  Static initialisatie
 
 Notes:
 
@@ -76,13 +87,17 @@ Notes:
 
 <div class="kc-grid kc-gap2">
 
-- **Reflectie**
+- <!-- .element: class="fragment" -->
+  **Reflectie**
 
-- **Spring**
+- <!-- .element: class="fragment" -->
+  **Spring**
 
-- **Static initialisatie**
+- <!-- .element: class="fragment" -->
+  **Static initialisatie**
 
-- **Iets anders**
+- <!-- .element: class="fragment" -->
+  **Iets anders**
 
 </div>
 
@@ -98,12 +113,18 @@ Notes:
 
 ### Doodlopende wegen
 
-- Logging
-  - Te laat
-- Stack traces
-  - Te laat
-- JVMTI tracing
-  - Geen oorzaak
+- <!-- .element: class="fragment" -->
+  Logging
+  - <!-- .element: class="fragment" -->
+    Te laat
+- <!-- .element: class="fragment" -->
+  Stack traces
+  - <!-- .element: class="fragment" -->
+    Te laat
+- <!-- .element: class="fragment" -->
+  JVMTI tracing
+  - <!-- .element: class="fragment" -->
+    Geen oorzaak
 
 Notes:
 

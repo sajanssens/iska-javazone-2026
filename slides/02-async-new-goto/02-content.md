@@ -11,21 +11,32 @@
 
 ---
 
-### Async returns before the work is done
+### Async function...
 
-- `thread.start()`
-- `executor.submit()`
-- `observable.subscribe()`
+... returns before the work is done
+
+- <!-- .element: class="fragment" -->
+  `thread.start()`
+- <!-- .element: class="fragment" -->
+  `executor.submit()`
+- <!-- .element: class="fragment" -->
+  `observable.subscribe()`
+- <!-- .element: class="fragment" -->
+  ...
 
 ---
 
 ### What that costs us
 
-- Cancellation
-- Exception handling
-- Resource management
+- <!-- .element: class="fragment" -->
+  Cancellation
+- <!-- .element: class="fragment" -->
+  Exception handling
+- <!-- .element: class="fragment" -->
+  Resource management
 
 All three assume the work lives inside a scope. Async work doesn't.
+<!-- .element: class="fragment" -->
 
 Notes:
 
@@ -49,6 +60,8 @@ main --> methodA
 methodA --> methodB
 :::
 
+<!-- .element: class="fragment" -->
+
 </div>
 
 <div>
@@ -61,6 +74,8 @@ main -->|submit| task
 main --> continues[main moves on]
 task -.-> somewhere[result, seen by no one]
 :::
+
+<!-- .element: class="fragment" -->
 
 </div>
 
@@ -90,12 +105,17 @@ Notes:
 
 ### Structured concurrency, back to sync rules
 
-- Child tasks are scoped to a block
-- The block doesn't exit until its children do, or are cancelled
-- One child fails, the rest are cancelled automatically
-- Exceptions propagate up, like a normal method call
+- <!-- .element: class="fragment" -->
+  Child tasks are scoped to a block
+- <!-- .element: class="fragment" -->
+  The block doesn't exit until its children do, or are cancelled
+- <!-- .element: class="fragment" -->
+  One child fails, the rest are cancelled automatically
+- <!-- .element: class="fragment" -->
+  Exceptions propagate up, like a normal method call
 
 We're not avoiding concurrency. We want it to read, and behave, like sync code.
+<!-- .element: class="fragment" -->
 
 
 Notes:

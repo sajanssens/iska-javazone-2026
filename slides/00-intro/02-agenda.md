@@ -22,21 +22,15 @@
 ### Facts
 
 - Community-driven by `javaBin`, Oslo, since 2001
+- Biggest in Norway <!-- .element: class="fragment" -->
 - 2 and 3 September 2026 <!-- .element: class="fragment" -->
 - NOVA Spektrum Lillestrøm <!-- .element: class="fragment" -->
   - 10 minutes by train from Oslo S <!-- .element: class="fragment" -->
-- Biggest community-driven Java conference in Norway <!-- .element: class="fragment" -->
-- Ticket is about 1 000 euro excluding VAT <!-- .element: class="fragment" -->
-
----
-
-### Not your average conference
-
-- No lunch lines <!-- .element: class="pos-color3 fragment" -->
-- AweZone party on day one <!-- .element: class="pos-color3 fragment" -->
-- Most waste actually recycled <!-- .element: class="pos-color3 fragment" -->
+- No lunch lines <!-- .element: class="fragment" -->
+- AweZone party on day one <!-- .element: class="fragment" -->
+- Most waste actually recycled <!-- .element: class="fragment" -->
   - Gjenvinning sorts the waste streams, rest goes to energy recovery and biogas <!-- .element: class="fragment" -->
-- Bring a hoodie? <!-- .element: class="pos-color3 fragment" -->
+- Bring a hoodie? <!-- .element: class="fragment" -->
 
 --- 
 
@@ -59,15 +53,29 @@ Dennis
 
 ### Agenda
 
-1. Self-Healing Rollouts
-1. Async is the new goto
-1. AI is stupid
-1. Context graphs for Spring AI
-1. Four antipatterns in prompting
-1. Docker & Nix
-1. De zaak van de spookklasse
-1. RSC & caching onder de motorkap
+1. <!-- .element: class="fragment" -->
+   Self-Healing Rollouts
+2. <!-- .element: class="fragment" -->
+   Async is the new goto
+3. <!-- .element: class="fragment" -->
+   AI is stupid
+4. <!-- .element: class="fragment" -->
+   The decision layer - context graphs for Spring AI
+5. <!-- .element: class="fragment" -->
+   Four antipatterns in prompting
+6. <!-- .element: class="fragment" -->
+   Docker & Nix
+7. <!-- .element: class="fragment" -->
+   Debugging class loading with GDB
+8. <!-- .element: class="fragment" -->
+   What RSCs can do in Next.js today
 
 <!-- .element: class="kc-condensed" -->
 
 <!-- .slide: class="is-fancy2" -->
+
+---
+
+![img.png](../../img/00-intro/sonic.gif)
+
+Buckle up...

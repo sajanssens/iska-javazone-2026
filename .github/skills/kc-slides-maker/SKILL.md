@@ -129,12 +129,12 @@ Use `class="fragment"` to reveal content step by step. Never add `data-fragment-
 
 Any slide with more than a few words, a single picture, or a single table generally benefits from fragments. Apply this to every relevant block, including lists, standalone paragraphs, code blocks, and a concluding paragraph after a list.
 
-For list items, put the element comment on its own bullet line. Do not put `class="fragment"` inline on the same line as the text, because that can break Markdown rendering:
+For list items, always put the element comment on its own bullet line, with the item's text on the following indented line(s). Never put `class="fragment"` inline at the end of the item's text line, even for short, plain-text items. Inline placement breaks Markdown rendering as soon as the item contains inline markup such as `**bold**`, `` `code` ``, or `*italic*`, so always use the safe form for every list item, without exception:
 
 ```md
-* <!-- .element class="fragment" -->
+* <!-- .element: class="fragment" -->
   A **class** is a static blueprint, fixed at compile time.
-* <!-- .element class="fragment" -->
+* <!-- .element: class="fragment" -->
   An **object** is an *instance* of a class.
 ```
 
