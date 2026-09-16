@@ -1,5 +1,6 @@
-## JavaZone 2026 Oslo: Key Takeaways
+## JavaZone 2026 Oslo 
 
-Handpicked by Bram
+#### Dennis Moes
+#### Bram Janssens
 
-<!-- .slide: class="is-welcome" -->
+<!-- .slide: class="" data-background-image="img/backgrounds/whale.jpg" data-background-opacity="0.6" -->
