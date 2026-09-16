@@ -54,21 +54,29 @@ Dennis
 ### Agenda
 
 1. <!-- .element: class="fragment" -->
-   Self-Healing Rollouts
+   **AI reality check**
+   1. <!-- .element: class="fragment" -->
+      AI is stupid
+   2. <!-- .element: class="fragment" -->
+      Four antipatterns in prompting
+   3. <!-- .element: class="fragment" -->
+      The decision layer - context graphs for Spring AI
+   4. <!-- .element: class="fragment" -->
+      Self-Healing Rollouts
 2. <!-- .element: class="fragment" -->
-   Async is the new goto
+   **Developer productivity**
+   1. <!-- .element: class="fragment" -->
+      Docker & Nix
+   2. <!-- .element: class="fragment" -->
+      What RSCs can do in Next.js today
 3. <!-- .element: class="fragment" -->
-   AI is stupid
+   **Understanding systems**
+   1. <!-- .element: class="fragment" -->
+      Async is the new goto
+   2. <!-- .element: class="fragment" -->
+      Debugging class loading with GDB
 4. <!-- .element: class="fragment" -->
-   The decision layer - context graphs for Spring AI
-5. <!-- .element: class="fragment" -->
-   Four antipatterns in prompting
-6. <!-- .element: class="fragment" -->
-   Docker & Nix
-7. <!-- .element: class="fragment" -->
-   Debugging class loading with GDB
-8. <!-- .element: class="fragment" -->
-   What RSCs can do in Next.js today
+   **Wrap up**
 
 <!-- .element: class="kc-condensed" -->
 
