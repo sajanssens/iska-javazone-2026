@@ -59,5 +59,5 @@ Create a persistent decision layer.
 
 ### Like it? See...
 
-![img_2.png](../../img/04-decision-layer-context-graphs/img.png)
+![img.png](../../img/04-decision-layer-context-graphs/watch.png)
 <!-- .slide: class="is-fancy1" -->
